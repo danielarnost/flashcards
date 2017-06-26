@@ -1,0 +1,19 @@
+doctype html
+html(lang="en")
+  head
+    title Flash Cards
+  body
+    header
+      h1 Flash Cards
+    section#content      
+      h2= prompt
+        ul
+          each firstName in firstNames
+            li= firstName
+    section#content      
+      h2= prompt
+        ul
+          each lastName in lastNames
+            li= lastName          
+    footer 
+      p Class members
