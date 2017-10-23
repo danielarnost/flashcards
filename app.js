@@ -1,28 +1,16 @@
 const express = require('express');
-
+const bodyParser = require('body-parser');
+const logger       = require("morgan");
 const app = express();
 
-const firstNames = [
-  'daniel',
-  'stephen',
-  'andrew',
-  'ryan',
-  'julie',
-  'bernie'
-];
-const lastNames = [
-  'one',
-  'two',
-  'thrice',
-  '4th',
-  'five',
-  'sanders'
-];
+//middleware
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 
 app.set('view engine', 'pug');
 
 app.get ('/', (req, res)=> {
-  res.render ('index');
+  res.render('index');
 });
 
 app.get('/cards', (req, res) => {
@@ -31,8 +19,16 @@ app.get('/cards', (req, res) => {
 
 //Sandbox
 //first name | last name
-app.get('/sandbox', (req, res) => {
-  res.render('sandbox', {prompt: "First and last names", firstNames, lastNames });
+// app.get('/sandbox', (req, res) => {
+//   res.render('sandbox', {prompt: "First and last names", firstNames, lastNames });
+// });
+//hello route (user name form)
+app.get('/hello', (req, res) => {
+  res.render('hello');
+});
+app.post('/hello', (req, res) => {  
+  // res.json(req.body); *To get JSON back from POST
+res.render('hello', {name: req.body.username});
 });
 
 app.listen(3000, () => {
