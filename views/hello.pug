@@ -1,10 +1,15 @@
 extends layout
 
 block content
-  if name  
-    h2 Welcome, #{name}!
-  form(action='/hello', method='post')
-    label Please enter your name here:
-      input(type='text', name='username')
-    button(type='submit') Submit
+    form(action='/hello', method='post')
+      //- action is the route, method is the http verb we want to use
+      label Please enter your name here:
+        input(type='text', name='username')
+      button(type='submit') Submit
   
+//- removed from top-------------------------
+    conditional statement that says if name entered in form, -> welcome Dan instaead of welcome student.  We remove this once we provide a redirect for the name form
+    and add cookies.
+    //- if name  
+  //-   h2 Welcome, #{name}!
+  //- else
